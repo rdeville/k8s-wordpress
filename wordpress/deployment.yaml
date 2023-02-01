@@ -20,12 +20,12 @@ spec:
         ports:
           - containerPort: 80
             name: wordpress-http
-        livenessProbe:
-          httpGet:
-            path: /
-            port: wordpress-http
-          initialDelaySeconds: 3
-          periodSeconds: 3
+        # livenessProbe:
+        #   httpGet:
+        #     path: /
+        #     port: wordpress-http
+        #   initialDelaySeconds: 3
+        #   periodSeconds: 3
         env:
         - name: WORDPRESS_DB_HOST
           value: mariadb-svc.default.svc.cluster.local
