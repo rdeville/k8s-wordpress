@@ -12,8 +12,11 @@ spec:
   template:
     metadata:
       labels:
-        app: wordpress-deployment
+        kubernetes.io/app: wordpress-deployment
     spec:
       containers:
       - image: wordpress:php8.2
         name: wordpress
+        port:
+          - containerPort: 80
+            name: wordpress-http
