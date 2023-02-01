@@ -18,3 +18,11 @@ spec:
       containers:
       - image: mariadb:10.7.7
         name: mariadb
+        env:
+        - name: MARIADB_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mariadb-secrets
+              key: MARIADB_ROOT_PASSWORD
+              optional: false
+
