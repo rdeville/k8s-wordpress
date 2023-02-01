@@ -29,4 +29,25 @@ spec:
               name: mariadb-secrets
               key: MARIADB_ROOT_PASSWORD
               optional: false
+        - name: MARIADB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mariadb-secrets
+              key: mariadb_user_password
+              optional: false
+        - name: MARIADB_DATABASE
+          valueFrom:
+            configMapKeyRef:
+              name: mariadb-cm
+              key: MARIADB_DATABASE
+              optional: false
+        - name: MARIADB_USER
+          valueFrom:
+            configMapKeyRef:
+              name: mariadb-cm
+              key: mariadb_user
+              optional: false
+
+
+
 
