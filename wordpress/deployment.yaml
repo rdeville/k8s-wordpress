@@ -26,3 +26,25 @@ spec:
             port: wordpress-http
           initialDelaySeconds: 3
           periodSeconds: 3
+        env:
+        - name: WORDPRESS_DB_HOST
+          value: mariadb-svc.default.svc.cluster.local
+        # value: mariadb-svc
+        - name: WORDPRESS_DB_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: mariadb-cm
+              key: MARIADB_DATABASE
+              optional: false
+        - name: WORDPRESS_DB_USER
+          valueFrom:
+            configMapKeyRef:
+              name: mariadb-cm
+              key: mariadb_user
+              optional: false
+        - name: WORDPRESS_DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mariadb-secrets
+              key: mariadb_user_password
+              optional: false
