@@ -8,7 +8,7 @@ spec:
   replicas: 3
   selector:
     matchLabels:
-      app: wordpress-deployment
+      kubernetes.io/app: wordpress-deployment
   template:
     metadata:
       labels:
