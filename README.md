@@ -8,6 +8,7 @@ kubectl create deployment mariadb \
     --image=mariadb:10.7.7  \
     --dry-run=client -o yaml > statefulset.yaml
 # On regarde l'état du manifest et on supprime les clés qui ne serve à rien
+# ON CHANGE LE KIND DE Deployment à StatefulSet
 vim statefulset.yaml
 # On applique le manifest
 k apply -f statefulset
