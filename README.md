@@ -51,4 +51,14 @@ k apply -f service.yaml
 k get pods
 k get service
 k describe service
+# Nous allons maintenan faire le wordpress
+# On va dans le dossier wordpress
+cd ../wordpress
+# On va sur docker hub pour avoir la référence de l'image
+# On créer le déployement
+kubectl create deployment wordpress-deployment \
+    --image=wordpress:php8.2  \
+    --dry-run=client -o yaml > deployment.yaml
+# On retire les clé qui ne serve à rien et on passe le réplica à 3
+vim deployment.yaml
 ```
