@@ -38,4 +38,17 @@ k get pods # On remarque que le pods et toujours down
 vim statefulset.yaml # On ajout le secret en variable d'environment
 k apply -f statefulset.yaml
 k get pods
+# Il nous faut maintenant un service
+# On va sur la documentation kubernetes
+# On ajoute le port mariadb sur le statefulset
+vim statefulset.yaml
+# On créer le service
+vim statefulset.yaml
+# On applique les changements
+k apply -f statefulset.yaml
+k apply -f service.yaml
+# On vérifie que tout est la
+k get pods
+k get service
+k describe service
 ```
