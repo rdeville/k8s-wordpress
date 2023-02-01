@@ -61,4 +61,20 @@ kubectl create deployment wordpress-deployment \
     --dry-run=client -o yaml > deployment.yaml
 # On retire les clé qui ne serve à rien et on passe le réplica à 3
 vim deployment.yaml
+# On peut appliquer le deployement
+k apply -f deployment.yaml
+# On peut vérifier que le wordpress tourne avec un port-forward
+k port-forward pods/wordpress-deployment-CHANGEME-CHANGEME 8080:80
+# On peut vérifier que le wordpress est démarrer en ouvrant notre navigateur
+# A localhost:8080
+# Bon, ca fonctionne, mais il ne faut pas configurer le wordpress de cette
+# mainère.
+# Il va nous alloir un service et un PV/PVC
+# On expost le port dans le container
+vim deployment.yaml
+# On récupère le service de mariadb et on le modifier pour wordpress
+vim service.yaml
+# On applique le tout et on vérifie
+k apply -f deployment.yaml
+k apply -f service.yaml
 ```
