@@ -2,17 +2,18 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   labels:
-    app: mariadb
-  name: mariadb
+    app: mariadb-sts
+  name: mariadb-sts
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: mariadb
+      app: mariadb-sts
+  serviceName: mariadb-svc
   template:
     metadata:
       labels:
-        app: mariadb
+        app: mariadb-sts
     spec:
       containers:
       - image: mariadb:10.7.7
