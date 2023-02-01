@@ -17,6 +17,6 @@ spec:
       containers:
       - image: wordpress:php8.2
         name: wordpress
-        port:
+        ports:
           - containerPort: 80
             name: wordpress-http
