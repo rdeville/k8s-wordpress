@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: wordpress-deployment
+  name: wordpress-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: wordpress-deployment
+  template:
+    metadata:
+      labels:
+        app: wordpress-deployment
+    spec:
+      containers:
+      - image: wordpress:php8.2
+        name: wordpress
